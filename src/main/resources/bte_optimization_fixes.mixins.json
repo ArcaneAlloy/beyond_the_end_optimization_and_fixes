@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "com.endersjourney.bteoptimizationfixes.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "refmap": "bte_optimization_fixes.refmap.json",
+  "mixins": [
+    "blockend.BlockEndCleanAreaMixin"
+  ],
+  "client": [
+    "euphoriapatcher.EuphoriaPatcherDetectionMixin"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+issueTrackerURL="https://github.com/ArcaneAlloy/bte-optimization-fixes/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="${mod_authors}"
+description='''${mod_description}'''
+
+[[dependencies.${mod_id}]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+# Nota: NO se declaran blockend/euphoria_patcher como dependencias aqui a
+# proposito. Este addon debe poder cargar (y no hacer nada) aunque alguno
+# de esos mods no este instalado — por eso cada Mixin lleva required=false
+# y no se listan como dependencia obligatoria ni opcional.

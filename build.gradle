@@ -1,0 +1,119 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+    }
+}
+
+plugins {
+    id 'eclipse'
+    id 'idea'
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            mods {
+                bteoptimizationfixes {
+                    source sourceSets.main
+                }
+            }
+        }
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            mods {
+                bteoptimizationfixes {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // Mixin annotation processor — sin el plugin de Gradle de Sponge, el
+    // refmap se genera pasando el argumento -AoutRefMapFile al compilador
+    // (ver compileJava mas abajo), no con un bloque mixin{} propio.
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+// Conecta el annotation processor de Mixin con la compilacion normal de
+// Java: esto es lo que sustituye al bloque mixin{} que fallaba, sin
+// necesitar aplicar el plugin org.spongepowered.mixin aparte.
+compileJava {
+    options.compilerArgs += [
+            "-AoutRefMapFile=${file("$buildDir/resources/main/${mod_id}.refmap.json")}"
+    ]
+}
+
+// Sustituye los placeholders ${mod_id}, ${mod_version}, etc. de
+// src/main/resources/META-INF/mods.toml por los valores reales de
+// gradle.properties durante el build. Sin esto, mods.toml se empaqueta
+// con los placeholders sin sustituir y el juego revienta al arrancar
+// (TOML invalido: "Invalid bare key: ${mod_id}").
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version: forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license,
+            mod_version: mod_version, mod_authors: mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+jar {
+    manifest {
+        attributes([
+                "Specification-Title"     : mod_id,
+                "Specification-Vendor"    : "ArcaneAlloy",
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Vendor"   : "ArcaneAlloy",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs"            : "${mod_id}.mixins.json"
+        ])
+    }
+}
+
+jar.finalizedBy('reobfJar')
