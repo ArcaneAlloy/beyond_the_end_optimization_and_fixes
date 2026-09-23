@@ -24,7 +24,7 @@ description='''${mod_description}'''
     ordering="NONE"
     side="BOTH"
 
-# Nota: NO se declaran blockend/euphoria_patcher como dependencias aqui a
+# Nota: blockend/euphoria_patcher/dynamictrees NO se declaran aqui a
 # proposito. Este addon debe poder cargar (y no hacer nada) aunque alguno
-# de esos mods no este instalado — por eso cada Mixin lleva required=false
-# y no se listan como dependencia obligatoria ni opcional.
+# de esos mods no este instalado — por eso todos sus Mixins llevan @Pseudo
+# y no se listan ni como dependencia obligatoria ni opcional.

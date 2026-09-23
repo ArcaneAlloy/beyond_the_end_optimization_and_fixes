@@ -5,7 +5,9 @@
   "minVersion": "0.8",
   "refmap": "bte_optimization_fixes.refmap.json",
   "mixins": [
-    "blockend.BlockEndCleanAreaMixin"
+    "blockend.BlockEndCleanAreaMixin",
+    "dynamictrees.JsonRegistryResourceLoaderMixin",
+    "modernfix.CachedResourcePathMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin"

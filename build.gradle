@@ -66,6 +66,15 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
+    // Solo para compilar el Mixin de dynamictrees con tipos reales
+    // (RegistryEntry) en vez de reflexion. @Pseudo en el propio Mixin
+    // sigue haciendo que el addon cargue igual si Dynamic Trees no esta
+    // presente en tiempo de ejecucion -- esto es compileOnly, no se
+    // empaqueta ni se declara como dependencia obligatoria en mods.toml.
+    // Jar local en libs/ para no depender de un repositorio maven externo;
+    // sustituir por la version que uses si actualizas Dynamic Trees.
+    compileOnly files('libs/DynamicTrees-1_19_2-1_2_2.jar')
+
     // Mixin annotation processor — sin el plugin de Gradle de Sponge, el
     // refmap se genera pasando el argumento -AoutRefMapFile al compilador
     // (ver compileJava mas abajo), no con un bloque mixin{} propio.

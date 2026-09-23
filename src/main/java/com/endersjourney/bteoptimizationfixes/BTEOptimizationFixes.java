@@ -19,6 +19,13 @@ import org.apache.logging.log4j.Logger;
  * el jar del mod objetivo en el classpath de compilacion, y hace que, si
  * esa clase no existe en tiempo de ejecucion, el Mixin simplemente no se
  * aplique -- sin tirar abajo el resto de fixes de este addon.
+ * Tambien incluye StructureUpgradeCommand: un comando de operador
+ * ("/bteopt upgradestructures <entrada> <salida>") para convertir en
+ * bloque estructuras NBT antiguas a la version de datos actual usando el
+ * DataFixerUpper real del servidor -- pensado para preparar de antemano
+ * los ficheros de mods/datapacks con NBTs desactualizados (ModernFix
+ * avisa de varios: betterdungeons, idas, dungeons_arise, etc.) y evitar
+ * ese coste en el primer arranque de cualquier jugador.
  */
 @Mod(BTEOptimizationFixes.MODID)
 public class BTEOptimizationFixes {
