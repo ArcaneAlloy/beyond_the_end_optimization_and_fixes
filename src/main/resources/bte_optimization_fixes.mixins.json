@@ -7,7 +7,8 @@
   "mixins": [
     "blockend.BlockEndCleanAreaMixin",
     "dynamictrees.JsonRegistryResourceLoaderMixin",
-    "modernfix.CachedResourcePathMixin"
+    "modernfix.CachedResourcePathMixin",
+    "kubejs.KubeJSPluginsMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin"
