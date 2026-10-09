@@ -8,7 +8,9 @@
     "blockend.BlockEndCleanAreaMixin",
     "dynamictrees.JsonRegistryResourceLoaderMixin",
     "modernfix.CachedResourcePathMixin",
-    "kubejs.KubeJSPluginsMixin"
+    "kubejs.KubeJSPluginsMixin",
+    "summoningrituals.AltarEmptyHandRetrieveMixin",
+    "summoningrituals.AltarInventoryDropCaptureMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin"

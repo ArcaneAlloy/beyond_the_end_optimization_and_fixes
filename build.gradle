@@ -75,6 +75,12 @@ dependencies {
     // sustituir por la version que uses si actualizas Dynamic Trees.
     compileOnly files('libs/DynamicTrees-1_19_2-1_2_2.jar')
 
+    // Igual que Dynamic Trees: solo para compilar los Mixins de Summoning
+    // Rituals con sus tipos reales (PlatformBlockEntity, AltarInventory,
+    // GameUtils). compileOnly + @Pseudo: no se empaqueta ni es dependencia
+    // obligatoria; sin el mod instalado esos Mixins no se aplican.
+    compileOnly files('libs/summoningrituals-forge-1.19.2-2.0.7.jar')
+
     // Mixin annotation processor — sin el plugin de Gradle de Sponge, el
     // refmap se genera pasando el argumento -AoutRefMapFile al compilador
     // (ver compileJava mas abajo), no con un bloque mixin{} propio.
