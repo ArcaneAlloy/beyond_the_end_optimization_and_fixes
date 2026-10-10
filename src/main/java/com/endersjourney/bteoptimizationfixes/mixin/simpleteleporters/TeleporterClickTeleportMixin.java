@@ -21,12 +21,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 /**
  * Simple Teleporters Reloaded 2.0.0: TeleporterBlock#use (m_6227_ en SRG,
  * por eso remap = false). Con cristal dentro y la mano principal vacia, el
- * original devolvia el cristal al jugador. Ahora:
+ * original devolvia el cristal al jugador. Ahora, si el teletransportador
+ * tiene cristal:
  *  - el cristal ya no se puede sacar con click (ni normal ni con Shift);
  *  - el click derecho teletransporta al jugador, igual que agacharse encima
- *    (ver TeleporterClickTeleport).
+ *    (ver TeleporterClickTeleport), lleve lo que lleve en la mano, como las
+ *    waystones. El item de la mano no se usa (no se come, no se coloca).
  *
- * Meter un cristal con el cristal en la mano funciona igual que antes.
+ * Sin cristal dentro se deja el comportamiento original (meter un cristal
+ * enlazado con el en la mano).
+ * Con Shift y un item en la mano, Minecraft no llega a llamar al click del
+ * bloque; para eso esta el teletransporte al agacharse encima del propio mod.
  * Se cancela en cliente y servidor, para que el cliente tampoco "prediga"
  * que el cristal pasa a la mano; el teletransporte solo ocurre en servidor.
  *
@@ -41,7 +46,7 @@ public abstract class TeleporterClickTeleportMixin {
     private void bteopt$teleportInsteadOfTakingCrystal(BlockState state, Level level, BlockPos pos, Player player,
                                                        InteractionHand hand, BlockHitResult hit,
                                                        CallbackInfoReturnable<InteractionResult> cir) {
-        if (hand != InteractionHand.MAIN_HAND || !player.getItemInHand(hand).isEmpty()) {
+        if (hand != InteractionHand.MAIN_HAND) {
             return;
         }
         BlockEntity blockEntity = level.getBlockEntity(pos);
