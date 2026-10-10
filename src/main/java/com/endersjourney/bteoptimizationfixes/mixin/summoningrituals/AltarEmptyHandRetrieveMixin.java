@@ -1,7 +1,6 @@
 package com.endersjourney.bteoptimizationfixes.mixin.summoningrituals;
 
 import com.almostreliable.summoningrituals.platform.PlatformBlockEntity;
-import com.endersjourney.bteoptimizationfixes.BTEOptimizationFixes;
 import com.endersjourney.bteoptimizationfixes.compat.summoningrituals.AltarItemRetrieval;
 import com.endersjourney.bteoptimizationfixes.compat.summoningrituals.AltarItemRetrieval.Action;
 import net.minecraft.server.level.ServerPlayer;
@@ -60,19 +59,6 @@ public abstract class AltarEmptyHandRetrieveMixin {
 
     @Inject(method = "handleInteraction", at = @At("HEAD"), cancellable = true, remap = false)
     private void bteopt$retrieveToHand(ServerPlayer player, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
-        // DIAGNOSTICO TEMPORAL -- quitar cuando se encuentre el fallo
-        BTEOptimizationFixes.LOGGER.info("[bteopt-altar] handleInteraction ENTRA: mano={} jugador={}", stack, player);
-        try {
-            bteopt$retrieveToHandBody(player, stack, cir);
-        } catch (RuntimeException | Error e) {
-            BTEOptimizationFixes.LOGGER.error("[bteopt-altar] EXCEPCION en el Mixin", e);
-            throw e;
-        }
-        BTEOptimizationFixes.LOGGER.info("[bteopt-altar] handleInteraction decision: cancelado={} devuelve={}",
-                cir.isCancelled(), cir.isCancelled() ? cir.getReturnValue() : "(original)");
-    }
-
-    private void bteopt$retrieveToHandBody(ServerPlayer player, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
         if (player == null) {
             return;
         }
