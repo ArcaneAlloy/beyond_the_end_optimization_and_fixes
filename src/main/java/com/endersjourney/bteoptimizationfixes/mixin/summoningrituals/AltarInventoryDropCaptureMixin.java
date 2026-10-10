@@ -8,7 +8,11 @@ import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import com.endersjourney.bteoptimizationfixes.BTEOptimizationFixes;
 
 /**
  * Summoning Rituals 2.0.7: AltarInventory#popLastInserted() termina siempre
@@ -29,6 +33,19 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Pseudo
 @Mixin(targets = "com.almostreliable.summoningrituals.inventory.AltarInventory", remap = false)
 public abstract class AltarInventoryDropCaptureMixin {
+
+    // DIAGNOSTICO TEMPORAL -- quitar cuando se encuentre el fallo
+    @Inject(method = "handleInsertion", at = @At("RETURN"), remap = false)
+    private void bteopt$debugInsertion(ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
+        BTEOptimizationFixes.LOGGER.info("[bteopt-altar] handleInsertion: entra={} sobra={}", stack, cir.getReturnValue());
+    }
+
+    // DIAGNOSTICO TEMPORAL -- quitar cuando se encuentre el fallo
+    @Inject(method = "popLastInserted", at = @At("HEAD"), remap = false)
+    private void bteopt$debugPop(CallbackInfo ci) {
+        BTEOptimizationFixes.LOGGER.info("[bteopt-altar] popLastInserted llamado (capturando={})",
+                AltarItemRetrieval.isCapturing(), new Throwable("traza de quien llama"));
+    }
 
     @Redirect(
             method = "popLastInserted",
