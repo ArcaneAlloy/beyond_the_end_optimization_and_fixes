@@ -14,7 +14,8 @@
     "beyondtheend.LobbyWarmupStatusMixin",
     "beyondtheend.RealmPlacementStatusMixin",
     "blockend.RealmPlacementStatusMixin",
-    "endersjourney.RealmPlacementStatusMixin"
+    "endersjourney.RealmPlacementStatusMixin",
+    "simpleteleporters.TeleporterClickTeleportMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin"

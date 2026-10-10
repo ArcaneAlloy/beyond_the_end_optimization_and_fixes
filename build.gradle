@@ -81,6 +81,10 @@ dependencies {
     // obligatoria; sin el mod instalado esos Mixins no se aplican.
     compileOnly files('libs/summoningrituals-forge-1.19.2-2.0.7.jar')
 
+    // Igual: tipos reales de Simple Teleporters Reloaded (TeleporterBlock,
+    // BlockEntityTeleporter) para su Mixin. compileOnly + @Pseudo.
+    compileOnly files('libs/SimpleTeleportersReloaded-forge-mc1.19.2-2.0.0.jar')
+
     // Mixin annotation processor — sin el plugin de Gradle de Sponge, el
     // refmap se genera pasando el argumento -AoutRefMapFile al compilador
     // (ver compileJava mas abajo), no con un bloque mixin{} propio.
