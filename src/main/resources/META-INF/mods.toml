@@ -24,7 +24,7 @@ description='''${mod_description}'''
     ordering="NONE"
     side="BOTH"
 
-# Nota: blockend/euphoria_patcher/dynamictrees/modernfix/kubejs/summoningrituals NO se
+# Nota: blockend/euphoria_patcher/dynamictrees/modernfix/kubejs/summoningrituals/beyondtheend/enders_journey NO se
 # declaran aqui a proposito. Este addon debe poder cargar (y no hacer
 # nada) aunque alguno de esos mods no este instalado — por eso todos sus
 # Mixins llevan @Pseudo y no se listan ni como dependencia obligatoria ni

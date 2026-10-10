@@ -1,0 +1,11 @@
+{
+  "bte_optimization_fixes.loading.preparing": "Preparando el mundo del modpack",
+  "bte_optimization_fixes.loading.lobby_structures": "Cargando las estructuras del lobby",
+  "bte_optimization_fixes.loading.beyondtheend_realm": "Generando el reino de Beyond The End",
+  "bte_optimization_fixes.loading.blockend_realm": "Generando la isla de The End",
+  "bte_optimization_fixes.loading.enders_journey_realm": "Generando The Forgotten Realm",
+  "bte_optimization_fixes.loading.reloading_recipes": "Cargando las recetas del modpack",
+  "bte_optimization_fixes.loading.finishing": "Terminando de preparar el mundo",
+  "bte_optimization_fixes.loading.connecting": "Entrando en el mundo",
+  "bte_optimization_fixes.loading.hint": "Este paso puede tardar un par de minutos. El juego no se ha colgado."
+}

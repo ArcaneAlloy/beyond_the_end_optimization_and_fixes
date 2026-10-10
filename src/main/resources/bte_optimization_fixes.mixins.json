@@ -10,7 +10,11 @@
     "modernfix.CachedResourcePathMixin",
     "kubejs.KubeJSPluginsMixin",
     "summoningrituals.AltarEmptyHandRetrieveMixin",
-    "summoningrituals.AltarInventoryDropCaptureMixin"
+    "summoningrituals.AltarInventoryDropCaptureMixin",
+    "beyondtheend.LobbyWarmupStatusMixin",
+    "beyondtheend.RealmPlacementStatusMixin",
+    "blockend.RealmPlacementStatusMixin",
+    "endersjourney.RealmPlacementStatusMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin"
