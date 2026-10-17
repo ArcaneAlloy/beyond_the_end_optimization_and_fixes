@@ -18,7 +18,8 @@
     "simpleteleporters.TeleporterClickTeleportMixin"
   ],
   "client": [
-    "euphoriapatcher.EuphoriaPatcherDetectionMixin"
+    "euphoriapatcher.EuphoriaPatcherDetectionMixin",
+    "advancementplaques.AdvancementPlaqueShaderColorMixin"
   ],
   "server": [],
   "injectors": {
