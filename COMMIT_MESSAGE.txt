@@ -1,0 +1,12 @@
+Show a hint and a key to open the Summoning Altar recipes
+
+- When the player looks at a Summoning Rituals indestructible altar, a
+  subtle semi-transparent box above the health bar says "Press U to see all
+  Summoning Altar recipes" (fades in and out).
+- Pressing the key (U by default, configurable in Controls under
+  "Beyond The End") opens JEI with every recipe that uses the Altar as
+  catalyst.
+- Small JEI plugin (JeiAltarRecipes) keeps the JEI runtime; JEI API added as
+  compileOnly from maven.blamejared.com (jei_version in gradle.properties).
+  Without JEI or Summoning Rituals nothing is shown.
+- Lang entries (en_us, es_es).

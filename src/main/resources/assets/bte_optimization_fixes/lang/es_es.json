@@ -7,5 +7,8 @@
   "bte_optimization_fixes.loading.reloading_recipes": "Cargando las recetas del modpack",
   "bte_optimization_fixes.loading.finishing": "Terminando de preparar el mundo",
   "bte_optimization_fixes.loading.connecting": "Entrando en el mundo",
-  "bte_optimization_fixes.loading.hint": "Este paso puede tardar un par de minutos. El juego no se ha colgado."
+  "bte_optimization_fixes.loading.hint": "Este paso puede tardar un par de minutos. El juego no se ha colgado.",
+  "bte_optimization_fixes.altar.hint": "Pulsa %s para ver todas las recetas del Altar de Invocación",
+  "key.bte_optimization_fixes.altar_recipes": "Recetas del Altar de Invocación",
+  "key.categories.bte_optimization_fixes": "Beyond The End"
 }

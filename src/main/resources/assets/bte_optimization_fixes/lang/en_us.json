@@ -7,5 +7,8 @@
   "bte_optimization_fixes.loading.reloading_recipes": "Loading the modpack recipes",
   "bte_optimization_fixes.loading.finishing": "Finishing world preparation",
   "bte_optimization_fixes.loading.connecting": "Joining the world",
-  "bte_optimization_fixes.loading.hint": "This step can take a couple of minutes. The game has not frozen."
+  "bte_optimization_fixes.loading.hint": "This step can take a couple of minutes. The game has not frozen.",
+  "bte_optimization_fixes.altar.hint": "Press %s to see all Summoning Altar recipes",
+  "key.bte_optimization_fixes.altar_recipes": "Summoning Altar recipes",
+  "key.categories.bte_optimization_fixes": "Beyond The End"
 }

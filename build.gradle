@@ -61,6 +61,8 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     mavenCentral()
+    // JEI (solo su API, para abrir las recetas del altar de Summoning Rituals)
+    maven { url = "https://maven.blamejared.com/" }
 }
 
 dependencies {
@@ -84,6 +86,13 @@ dependencies {
     // Igual: tipos reales de Simple Teleporters Reloaded (TeleporterBlock,
     // BlockEntityTeleporter) para su Mixin. compileOnly + @Pseudo.
     compileOnly files('libs/SimpleTeleportersReloaded-forge-mc1.19.2-2.0.0.jar')
+
+    // API de JEI: solo para compilar el plugin que abre las recetas del altar
+    // de Summoning Rituals con la tecla U. compileOnly: no se empaqueta ni es
+    // dependencia obligatoria; sin JEI la tecla simplemente no hace nada.
+    // Las interfaces (IModPlugin, IJeiRuntime, IFocus...) estan en common-api
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
 
     // Mixin annotation processor — sin el plugin de Gradle de Sponge, el
     // refmap se genera pasando el argumento -AoutRefMapFile al compilador
