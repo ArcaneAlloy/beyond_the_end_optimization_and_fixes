@@ -9,6 +9,11 @@
   "bte_optimization_fixes.loading.connecting": "Joining the world",
   "bte_optimization_fixes.loading.hint": "This step can take a couple of minutes. The game has not frozen.",
   "bte_optimization_fixes.altar.hint": "Press %s to see all Summoning Altar recipes",
+  "bte_optimization_fixes.clock.sunrise": "Sunrise",
+  "bte_optimization_fixes.clock.day": "Day",
+  "bte_optimization_fixes.clock.sunset": "Sunset",
+  "bte_optimization_fixes.clock.night": "Night",
+  "bte_optimization_fixes.clock.overworld": "Overworld time",
   "key.bte_optimization_fixes.altar_recipes": "Summoning Altar recipes",
   "key.categories.bte_optimization_fixes": "Beyond The End"
 }

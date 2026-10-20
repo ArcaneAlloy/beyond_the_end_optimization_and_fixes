@@ -9,6 +9,11 @@
   "bte_optimization_fixes.loading.connecting": "Entrando en el mundo",
   "bte_optimization_fixes.loading.hint": "Este paso puede tardar un par de minutos. El juego no se ha colgado.",
   "bte_optimization_fixes.altar.hint": "Pulsa %s para ver todas las recetas del Altar de Invocación",
+  "bte_optimization_fixes.clock.sunrise": "Amaneciendo",
+  "bte_optimization_fixes.clock.day": "Día",
+  "bte_optimization_fixes.clock.sunset": "Atardeciendo",
+  "bte_optimization_fixes.clock.night": "Noche",
+  "bte_optimization_fixes.clock.overworld": "Hora del Overworld",
   "key.bte_optimization_fixes.altar_recipes": "Recetas del Altar de Invocación",
   "key.categories.bte_optimization_fixes": "Beyond The End"
 }
