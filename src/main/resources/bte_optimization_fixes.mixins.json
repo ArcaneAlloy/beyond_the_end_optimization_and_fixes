@@ -21,7 +21,8 @@
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",
     "advancementplaques.AdvancementPlaqueShaderColorMixin",
     "geckolib.AnimationProcessorPauseMixin",
-    "geckolib.AnimatedGeoModelGuiTickMixin"
+    "geckolib.AnimatedGeoModelGuiTickMixin",
+    "jeresources.VillagerRegistryOnlyWanderingMixin"
   ],
   "server": [],
   "injectors": {
