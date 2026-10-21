@@ -20,7 +20,8 @@
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",
     "advancementplaques.AdvancementPlaqueShaderColorMixin",
-    "geckolib.AnimationProcessorPauseMixin"
+    "geckolib.AnimationProcessorPauseMixin",
+    "geckolib.AnimatedGeoModelGuiTickMixin"
   ],
   "server": [],
   "injectors": {
