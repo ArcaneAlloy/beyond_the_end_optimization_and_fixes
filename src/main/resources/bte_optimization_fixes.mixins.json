@@ -19,7 +19,8 @@
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",
-    "advancementplaques.AdvancementPlaqueShaderColorMixin"
+    "advancementplaques.AdvancementPlaqueShaderColorMixin",
+    "geckolib.AnimationProcessorPauseMixin"
   ],
   "server": [],
   "injectors": {
