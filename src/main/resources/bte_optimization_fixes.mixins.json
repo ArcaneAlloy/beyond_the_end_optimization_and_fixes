@@ -15,7 +15,9 @@
     "beyondtheend.RealmPlacementStatusMixin",
     "blockend.RealmPlacementStatusMixin",
     "endersjourney.RealmPlacementStatusMixin",
-    "simpleteleporters.TeleporterClickTeleportMixin"
+    "simpleteleporters.TeleporterClickTeleportMixin",
+    "alexsmobs.CrimsonMosquitoNoWarpedTransformMixin",
+    "alexsmobs.MungusNoWarpedMoscoMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",

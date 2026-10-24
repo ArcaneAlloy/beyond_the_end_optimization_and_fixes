@@ -1,0 +1,13 @@
+{
+  "entityType": "alexsmobs:crimson_mosquito",
+  "resultEntityType": "alexsmobs:warped_mosco",
+  "mutatedSoundEvent": "alexsmobs:warped_mosco_idle",
+  "screenShake": {
+    "amount": 0.05,
+    "duration": 26,
+    "range": 25
+  },
+  "requiredMods": [
+    "alexsmobs"
+  ]
+}
