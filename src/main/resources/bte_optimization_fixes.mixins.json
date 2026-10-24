@@ -17,7 +17,8 @@
     "endersjourney.RealmPlacementStatusMixin",
     "simpleteleporters.TeleporterClickTeleportMixin",
     "alexsmobs.CrimsonMosquitoNoWarpedTransformMixin",
-    "alexsmobs.MungusNoWarpedMoscoMixin"
+    "alexsmobs.MungusNoWarpedMoscoMixin",
+    "forge.BrewingRecipeRegistryThreadSafeMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",
