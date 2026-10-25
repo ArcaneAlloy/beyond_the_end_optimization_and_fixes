@@ -53,6 +53,9 @@ import java.util.concurrent.atomic.LongAdder;
  *    piden el bioma de posiciones de chunks no cargados, el mismo desde muchos chunks.
  * 6. Alturas del chunk guardadas en el chunk (ChunkHeightCacheMixin): getMinBuildHeight/getHeight se piden varias
  *    veces por cada bloque leído.
+ * 7. Escaneos verticales de las features (EnvironmentScanFastMixin, CountOnEveryLayerFastMixin, ColumnScan):
+ *    count_on_every_layer lee cada columna una sola vez por llamada en lugar de una vez por capa, y los dos saltan de
+ *    golpe las secciones de solo aire, cuyas lecturas valen AIR.
  *
  * Comprobación del punto 3: /bteopt genopt noisehash start|stop guarda una huella de los bloques de cada chunk justo
  * después del relleno del terreno (logs/bteopt_noisehash_<fecha>.txt). Dos pasadas con la misma semilla, una con las
@@ -82,6 +85,8 @@ public final class WorldgenOpt {
     public static final LongAdder UNCACHED_BIOMES_HIT = new LongAdder();
     public static final LongAdder UNCACHED_BIOMES_VERIFIED = new LongAdder();
     public static final LongAdder UNCACHED_BIOMES_MISMATCH = new LongAdder();
+    public static final LongAdder SCANS_VERIFIED = new LongAdder();
+    public static final LongAdder SCANS_MISMATCH = new LongAdder();
     private static final AtomicInteger MISMATCH_LOGS = new AtomicInteger();
 
     /** Para el modo verificación: estructura saltable que se está dejando a vanilla, y bioma que dio la caché. */
@@ -152,6 +157,8 @@ public final class WorldgenOpt {
         UNCACHED_BIOMES_HIT.reset();
         UNCACHED_BIOMES_VERIFIED.reset();
         UNCACHED_BIOMES_MISMATCH.reset();
+        SCANS_VERIFIED.reset();
+        SCANS_MISMATCH.reset();
         MISMATCH_LOGS.set(0);
         return show(ctx);
     }
@@ -226,7 +233,9 @@ public final class WorldgenOpt {
                         + (hashing ? "; huellas del relleno: " + HASHES.size() + " chunks (grabando)" : ""),
                 "[bteopt-genopt] Islas del End verificadas: " + ISLANDS_VERIFIED.sum() + ", diferencias: " + ISLANDS_MISMATCH.sum(),
                 "[bteopt-genopt] Biomas sin chunk servidos desde la caché: " + UNCACHED_BIOMES_HIT.sum()
-                        + "; verificados: " + UNCACHED_BIOMES_VERIFIED.sum() + ", diferencias: " + UNCACHED_BIOMES_MISMATCH.sum()
+                        + "; verificados: " + UNCACHED_BIOMES_VERIFIED.sum() + ", diferencias: " + UNCACHED_BIOMES_MISMATCH.sum(),
+                "[bteopt-genopt] Escaneos de columna (environment_scan, count_on_every_layer) verificados: " + SCANS_VERIFIED.sum()
+                        + ", diferencias: " + SCANS_MISMATCH.sum()
         };
         for (String line : lines) {
             ctx.getSource().sendSuccess(Component.literal(line), false);

@@ -39,6 +39,11 @@
     "worldgen.EndIslandCacheMixin",
     "worldgen.UncachedBiomeCacheMixin",
     "worldgen.ChunkHeightCacheMixin",
+    "worldgen.StateTestingPredicateShapeMixin",
+    "worldgen.CombiningPredicateShapeMixin",
+    "worldgen.NotPredicateShapeMixin",
+    "worldgen.EnvironmentScanFastMixin",
+    "worldgen.CountOnEveryLayerFastMixin",
     "worldgen.NoiseChunkReuseMixin",
     "quark.QuarkGeneratorTimingMixin"
   ],
