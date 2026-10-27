@@ -47,7 +47,8 @@
     "worldgen.NoiseChunkReuseMixin",
     "quark.QuarkGeneratorTimingMixin",
     "naturescompass.BiomeSearchWorkerAsyncMixin",
-    "naturescompass.CompassBiomeListDimensionMixin"
+    "naturescompass.CompassBiomeListDimensionMixin",
+    "uselessmilk.UselessMilkTickLogMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",

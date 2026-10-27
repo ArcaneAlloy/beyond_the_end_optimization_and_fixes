@@ -15,5 +15,6 @@
   "bte_optimization_fixes.clock.night": "Night",
   "bte_optimization_fixes.clock.overworld": "Overworld time",
   "key.bte_optimization_fixes.altar_recipes": "Summoning Altar recipes",
-  "key.categories.bte_optimization_fixes": "Beyond The End"
+  "key.categories.bte_optimization_fixes": "Beyond The End",
+  "bte_optimization_fixes.warden.ranged_immune": "The Warden is too far away: your shots deal no damage"
 }
