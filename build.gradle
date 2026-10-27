@@ -87,6 +87,10 @@ dependencies {
     // BlockEntityTeleporter) para su Mixin. compileOnly + @Pseudo.
     compileOnly files('libs/SimpleTeleportersReloaded-forge-mc1.19.2-2.0.0.jar')
 
+    // Igual: tipos reales de Nature's Compass (NaturesCompassItem) para el
+    // Mixin de la busqueda de biomas. compileOnly + @Pseudo.
+    compileOnly files('libs/NaturesCompass-1.19.2-1.10.0-forge.jar')
+
     // API de JEI: solo para compilar el plugin que abre las recetas del altar
     // de Summoning Rituals con la tecla U. compileOnly: no se empaqueta ni es
     // dependencia obligatoria; sin JEI la tecla simplemente no hace nada.

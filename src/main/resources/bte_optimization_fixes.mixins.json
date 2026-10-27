@@ -45,7 +45,9 @@
     "worldgen.EnvironmentScanFastMixin",
     "worldgen.CountOnEveryLayerFastMixin",
     "worldgen.NoiseChunkReuseMixin",
-    "quark.QuarkGeneratorTimingMixin"
+    "quark.QuarkGeneratorTimingMixin",
+    "naturescompass.BiomeSearchWorkerAsyncMixin",
+    "naturescompass.CompassBiomeListDimensionMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",
