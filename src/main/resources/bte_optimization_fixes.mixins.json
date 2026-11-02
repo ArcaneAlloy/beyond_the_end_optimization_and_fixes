@@ -55,7 +55,8 @@
     "advancementplaques.AdvancementPlaqueShaderColorMixin",
     "geckolib.AnimationProcessorPauseMixin",
     "geckolib.AnimatedGeoModelGuiTickMixin",
-    "jeresources.VillagerRegistryOnlyWanderingMixin"
+    "jeresources.VillagerRegistryOnlyWanderingMixin",
+    "oculus.OculusTitleScreenPipelineSkipMixin"
   ],
   "server": [],
   "injectors": {
