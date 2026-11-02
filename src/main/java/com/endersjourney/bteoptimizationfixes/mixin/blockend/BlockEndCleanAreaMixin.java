@@ -158,16 +158,34 @@ public abstract class BlockEndCleanAreaMixin {
         queueCleanup(level, positions);
     }
 
+    /**
+     * La limpieza tiene que ejecutarse ANTES de colocar la isla y la torre. En BlockEnd 1.2.2 el escaneo era
+     * sincrono dentro de cleanAreaBatched, asi que sus lotes de limpieza quedaban en la cola por delante de las
+     * tareas de colocacion. Al pasar el escaneo a tareas, los lotes se anadian al FINAL de la cola, detras de la
+     * colocacion, y borraban (a aire) todo lo que la isla y la torre habian puesto por debajo de y=70: la torre
+     * se quedaba flotando a trozos. Ahora los lotes se meten al PRINCIPIO de la cola, justo detras del escaneo
+     * de su chunk. Solo tocan bloques de ese chunk, asi que el orden respecto al resto de escaneos no importa.
+     */
     private void queueCleanup(ServerLevel level, List<BlockPos> positions) {
+        List<Runnable> batches = new ArrayList<>();
         for (int i = 0; i < positions.size(); i += CLEAN_BATCH) {
             int start = i;
             int end = Math.min(i + CLEAN_BATCH, positions.size());
 
-            this.tasks.add(() -> {
+            batches.add(() -> {
                 for (int j = start; j < end; j++) {
                     level.setBlock(positions.get(j), Blocks.AIR.defaultBlockState(), 1);
                 }
             });
+        }
+
+        if (this.tasks instanceof Deque) {
+            Deque<Runnable> deque = (Deque<Runnable>) this.tasks;
+            for (int i = batches.size() - 1; i >= 0; i--) {
+                deque.addFirst(batches.get(i));
+            }
+        } else {
+            this.tasks.addAll(batches);
         }
     }
 
