@@ -6,6 +6,7 @@
   "refmap": "bte_optimization_fixes.refmap.json",
   "mixins": [
     "blockend.BlockEndCleanAreaMixin",
+    "blockend.BlockEndTowerAirMixin",
     "dynamictrees.JsonRegistryResourceLoaderMixin",
     "modernfix.CachedResourcePathMixin",
     "kubejs.KubeJSPluginsMixin",
