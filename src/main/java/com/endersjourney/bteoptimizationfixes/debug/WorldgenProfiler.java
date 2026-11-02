@@ -54,6 +54,11 @@ public final class WorldgenProfiler {
      * Lo pone flybench para poder separar las muestras por zona del recorrido.
      */
     public static volatile String segment;
+    /**
+     * Si es true, también se toman muestras del hilo de render del cliente ("[hilo render]"). Lo activa playbench para
+     * medir los FPS además del servidor; genprof y flybench lo dejan apagado.
+     */
+    public static volatile boolean includeRender;
     private static Thread sampler;
 
     private static final Map<String, Integer> FRAME_IDS = new HashMap<>();
@@ -109,7 +114,7 @@ public final class WorldgenProfiler {
     private static void sampleLoop() {
         ThreadMXBean mx = ManagementFactory.getThreadMXBean();
         long[] ids = new long[0];
-        long serverId = -1;
+        long serverId = -1, renderId = -1;
         long lastRefresh = 0;
         while (running) {
             long now = System.nanoTime();
@@ -123,6 +128,9 @@ public final class WorldgenProfiler {
                     else if (n.equals("Server thread")) {
                         list.add(ti.getThreadId());
                         serverId = ti.getThreadId();
+                    } else if (includeRender && n.equals("Render thread")) {
+                        list.add(ti.getThreadId());
+                        renderId = ti.getThreadId();
                     }
                 }
                 ids = list.stream().mapToLong(Long::longValue).toArray();
@@ -135,6 +143,7 @@ public final class WorldgenProfiler {
                     StackTraceElement[] st = ti.getStackTrace();
                     if (isIdle(st)) continue;
                     String root = ti.getThreadId() == serverId ? "[hilo principal]"
+                            : ti.getThreadId() == renderId ? "[hilo render]"
                             : IN_MAILBOX.contains(ti.getThreadId()) ? "[cola en serie]" : "[en paralelo]";
                     String seg = segment;
                     int off = seg == null ? 1 : 2;

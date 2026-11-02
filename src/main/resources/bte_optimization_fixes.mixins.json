@@ -51,7 +51,11 @@
     "quark.QuarkGeneratorTimingMixin",
     "naturescompass.BiomeSearchWorkerAsyncMixin",
     "naturescompass.CompassBiomeListDimensionMixin",
-    "uselessmilk.UselessMilkTickLogMixin"
+    "uselessmilk.UselessMilkTickLogMixin",
+    "mutantmore.MutationCloudSkipMixin",
+    "dragonenchants.DragonEnchantsTickSkipMixin",
+    "dungeonsgear.DungeonsGearAuraTickSkipMixin",
+    "dynamictrees.BranchShapeCacheMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",
