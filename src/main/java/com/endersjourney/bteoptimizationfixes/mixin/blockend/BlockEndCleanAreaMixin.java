@@ -1,5 +1,6 @@
 package com.endersjourney.bteoptimizationfixes.mixin.blockend;
 
+import com.endersjourney.bteoptimizationfixes.worldgen.BlockEndCleanTickets;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Blocks;
@@ -11,6 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 import java.util.Queue;
 
@@ -34,6 +36,16 @@ import java.util.Queue;
  *     tareas para la rejilla -125..125), y cada una de esas tareas encola
  *     a su vez sus propios lotes de limpieza de 2000 bloques, igual que
  *     antes.
+ *
+ *  3) Pide por adelantado, con un ticket propio, todos los chunks que va a
+ *     escanear. Antes cada tarea de escaneo hacia getChunk() sincrono: el
+ *     hilo del servidor se quedaba esperando a que se generase ese chunk
+ *     del End, uno detras de otro, y en un mundo nuevo eso retrasaba ~11 s
+ *     la entrada del jugador. Ahora se generan en paralelo en los workers y,
+ *     si cuando le toca a una tarea su chunk aun no esta listo, la tarea se
+ *     vuelve a poner AL PRINCIPIO de la cola (BlockEndCleanTickets) y lo
+ *     intenta en la siguiente pasada. El orden de la cola no cambia: todos
+ *     los escaneos siguen yendo antes que la colocacion de la isla.
  *
  * El resultado visible en el mundo es identico al original: los mismos
  * bloques que antes se limpiaban a aire (todo lo que no sea end_stone
@@ -78,11 +90,20 @@ public abstract class BlockEndCleanAreaMixin {
         int minChunkZ = MIN_Z >> 4;
         int maxChunkZ = (MAX_Z - 1) >> 4;
 
+        // La cola de BlockEnd es un ArrayDeque; si algun dia no lo fuese, se hace como antes (sincrono)
+        Deque<Runnable> deque = this.tasks instanceof Deque ? (Deque<Runnable>) this.tasks : null;
+
         for (int cxOuter = minChunkX; cxOuter <= maxChunkX; cxOuter++) {
             for (int czOuter = minChunkZ; czOuter <= maxChunkZ; czOuter++) {
                 final int cx = cxOuter;
                 final int cz = czOuter;
-                this.tasks.add(() -> scanAndQueueChunk(level, cx, cz, minY));
+                Runnable scan = () -> scanAndQueueChunk(level, cx, cz, minY);
+                if (deque != null && chunkTouchesRadius(cx << 4, cz << 4)) {
+                    BlockEndCleanTickets.request(level, cx, cz);
+                    this.tasks.add(BlockEndCleanTickets.whenLoaded(deque, level, cx, cz, scan));
+                } else {
+                    this.tasks.add(scan);
+                }
             }
         }
     }
