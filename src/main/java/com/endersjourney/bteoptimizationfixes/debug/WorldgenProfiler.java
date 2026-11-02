@@ -49,6 +49,11 @@ public final class WorldgenProfiler {
     private static final Set<Long> IN_MAILBOX = ConcurrentHashMap.newKeySet();
 
     public static volatile boolean running = false;
+    /**
+     * Si no es null, se anade como segundo marco de cada pila (justo despues de la categoria), p. ej. "[tramo x=2500]".
+     * Lo pone flybench para poder separar las muestras por zona del recorrido.
+     */
+    public static volatile String segment;
     private static Thread sampler;
 
     private static final Map<String, Integer> FRAME_IDS = new HashMap<>();
@@ -131,11 +136,14 @@ public final class WorldgenProfiler {
                     if (isIdle(st)) continue;
                     String root = ti.getThreadId() == serverId ? "[hilo principal]"
                             : IN_MAILBOX.contains(ti.getThreadId()) ? "[cola en serie]" : "[en paralelo]";
-                    int[] frames = new int[st.length + 1];
+                    String seg = segment;
+                    int off = seg == null ? 1 : 2;
+                    int[] frames = new int[st.length + off];
                     frames[0] = frameId(root);
+                    if (seg != null) frames[1] = frameId(seg);
                     for (int i = 0; i < st.length; i++) {
                         StackTraceElement e = st[st.length - 1 - i]; // de la raíz a la hoja
-                        frames[i + 1] = frameId(e.getClassName() + "." + e.getMethodName());
+                        frames[i + off] = frameId(e.getClassName() + "." + e.getMethodName());
                     }
                     STACKS.computeIfAbsent(new StackKey(frames), k -> new int[1])[0]++;
                     samples++;
@@ -149,7 +157,7 @@ public final class WorldgenProfiler {
         }
     }
 
-    private static void start() {
+    static void start() {
         stopSampler();
         synchronized (STACKS) {
             STACKS.clear();
@@ -166,7 +174,7 @@ public final class WorldgenProfiler {
         sampler.start();
     }
 
-    private static void stopSampler() {
+    static void stopSampler() {
         running = false;
         Thread t = sampler;
         sampler = null;
@@ -180,7 +188,7 @@ public final class WorldgenProfiler {
         IN_MAILBOX.clear();
     }
 
-    private static Path write() throws IOException {
+    static Path write() throws IOException {
         Path dir = FMLPaths.GAMEDIR.get().resolve("logs");
         Files.createDirectories(dir);
         Path file = dir.resolve("bteopt_genprof_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss")) + ".txt");

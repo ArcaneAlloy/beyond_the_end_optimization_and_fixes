@@ -46,6 +46,8 @@
     "worldgen.EnvironmentScanFastMixin",
     "worldgen.CountOnEveryLayerFastMixin",
     "worldgen.NoiseChunkReuseMixin",
+    "worldgen.StructureEntityReportMixin",
+    "worldgen.SystemReportHardwareSkipMixin",
     "quark.QuarkGeneratorTimingMixin",
     "naturescompass.BiomeSearchWorkerAsyncMixin",
     "naturescompass.CompassBiomeListDimensionMixin",
