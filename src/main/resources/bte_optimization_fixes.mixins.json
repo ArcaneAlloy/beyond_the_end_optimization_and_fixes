@@ -57,7 +57,8 @@
     "geckolib.AnimationProcessorPauseMixin",
     "geckolib.AnimatedGeoModelGuiTickMixin",
     "jeresources.VillagerRegistryOnlyWanderingMixin",
-    "oculus.OculusTitleScreenPipelineSkipMixin"
+    "oculus.OculusTitleScreenPipelineSkipMixin",
+    "client.CreateWorldGlobalPacksSkipMixin"
   ],
   "server": [],
   "injectors": {
