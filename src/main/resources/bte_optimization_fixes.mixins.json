@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "refmap": "bte_optimization_fixes.refmap.json",
+  "plugin": "com.endersjourney.bteoptimizationfixes.BteMixinPlugin",
   "mixins": [
     "blockend.BlockEndCleanAreaMixin",
     "blockend.BlockEndTowerAirMixin",
@@ -55,7 +56,10 @@
     "mutantmore.MutationCloudSkipMixin",
     "dragonenchants.DragonEnchantsTickSkipMixin",
     "dungeonsgear.DungeonsGearAuraTickSkipMixin",
-    "dynamictrees.BranchShapeCacheMixin"
+    "dynamictrees.BranchShapeCacheMixin",
+    "salmons.SalmonsMainServerSafeMixin",
+    "salmons.SalmonsClientEventsServerSafeMixin",
+    "salmons.SalmonsWarlordServerSafeMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",
