@@ -67,6 +67,8 @@
     "advancementplaques.AdvancementPlaqueShaderColorMixin",
     "geckolib.AnimationProcessorPauseMixin",
     "geckolib.AnimatedGeoModelGuiTickMixin",
+    "geckolib.HumanoidArmorLayerSourceMixin",
+    "geckolib.GeoArmorShadowBufferMixin",
     "jeresources.VillagerRegistryOnlyWanderingMixin",
     "oculus.OculusTitleScreenPipelineSkipMixin",
     "client.CreateWorldGlobalPacksSkipMixin"
