@@ -59,7 +59,8 @@
     "dynamictrees.BranchShapeCacheMixin",
     "salmons.SalmonsMainServerSafeMixin",
     "salmons.SalmonsClientEventsServerSafeMixin",
-    "salmons.SalmonsWarlordServerSafeMixin"
+    "salmons.SalmonsWarlordServerSafeMixin",
+    "mimic.MimicChaseRepathMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",
