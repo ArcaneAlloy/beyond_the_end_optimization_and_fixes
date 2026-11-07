@@ -6,6 +6,7 @@
   "refmap": "bte_optimization_fixes.refmap.json",
   "plugin": "com.endersjourney.bteoptimizationfixes.BteMixinPlugin",
   "mixins": [
+    "item.ItemStackDamageTagMixin",
     "blockend.BlockEndCleanAreaMixin",
     "blockend.BlockEndTowerAirMixin",
     "dynamictrees.JsonRegistryResourceLoaderMixin",
