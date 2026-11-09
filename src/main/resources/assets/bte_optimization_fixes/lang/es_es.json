@@ -16,5 +16,6 @@
   "bte_optimization_fixes.clock.overworld": "Hora del Overworld",
   "key.bte_optimization_fixes.altar_recipes": "Recetas del Altar de Invocación",
   "key.categories.bte_optimization_fixes": "Beyond The End",
-  "bte_optimization_fixes.warden.ranged_immune": "El Warden está demasiado lejos: tus disparos no le hacen daño"
+  "bte_optimization_fixes.warden.ranged_immune": "El Warden está demasiado lejos: tus disparos no le hacen daño",
+  "tooltip.bte_optimization_fixes.totem_inventory": "Funciona desde cualquier hueco del inventario: no hace falta llevarlo en la mano"
 }

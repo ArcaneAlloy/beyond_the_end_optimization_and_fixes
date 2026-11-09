@@ -16,5 +16,6 @@
   "bte_optimization_fixes.clock.overworld": "Overworld time",
   "key.bte_optimization_fixes.altar_recipes": "Summoning Altar recipes",
   "key.categories.bte_optimization_fixes": "Beyond The End",
-  "bte_optimization_fixes.warden.ranged_immune": "The Warden is too far away: your shots deal no damage"
+  "bte_optimization_fixes.warden.ranged_immune": "The Warden is too far away: your shots deal no damage",
+  "tooltip.bte_optimization_fixes.totem_inventory": "Works from anywhere in your inventory: no need to hold it"
 }
