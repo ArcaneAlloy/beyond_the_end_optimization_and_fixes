@@ -17,5 +17,7 @@
   "key.bte_optimization_fixes.altar_recipes": "Recetas del Altar de Invocación",
   "key.categories.bte_optimization_fixes": "Beyond The End",
   "bte_optimization_fixes.warden.ranged_immune": "El Warden está demasiado lejos: tus disparos no le hacen daño",
-  "tooltip.bte_optimization_fixes.totem_inventory": "Funciona desde cualquier hueco del inventario: no hace falta llevarlo en la mano"
+  "tooltip.bte_optimization_fixes.totem_inventory": "Funciona desde cualquier hueco del inventario: no hace falta llevarlo en la mano",
+  "tooltip.bte_optimization_fixes.altar_summon.boss": "Invoca a: %s",
+  "tooltip.bte_optimization_fixes.altar_summon.where": "Úsalo en el Altar de Invocación del Coliseo"
 }
