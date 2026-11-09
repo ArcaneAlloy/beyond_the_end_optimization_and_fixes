@@ -68,6 +68,7 @@
     "advancementplaques.AdvancementPlaqueShaderColorMixin",
     "geckolib.AnimationProcessorPauseMixin",
     "geckolib.AnimatedGeoModelGuiTickMixin",
+    "geckolib.AnimatedTickingGeoModelGuiTickMixin",
     "geckolib.HumanoidArmorLayerSourceMixin",
     "geckolib.GeoArmorShadowBufferMixin",
     "jeresources.VillagerRegistryOnlyWanderingMixin",
