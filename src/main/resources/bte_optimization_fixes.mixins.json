@@ -61,7 +61,11 @@
     "salmons.SalmonsMainServerSafeMixin",
     "salmons.SalmonsClientEventsServerSafeMixin",
     "salmons.SalmonsWarlordServerSafeMixin",
-    "mimic.MimicChaseRepathMixin"
+    "mimic.MimicChaseRepathMixin",
+    "forgottentome.ForgottenTomeCombatMapMixin",
+    "worldgen.ProtectedStructureGenerateMixin",
+    "worldgen.ProtectedStructureLocateMixin",
+    "quark.CorundumStructureGuardMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",
@@ -71,6 +75,7 @@
     "geckolib.AnimatedTickingGeoModelGuiTickMixin",
     "geckolib.HumanoidArmorLayerSourceMixin",
     "geckolib.GeoArmorShadowBufferMixin",
+    "dungeonsmobs.SkeletonVanguardHeldItemMixin",
     "jeresources.VillagerRegistryOnlyWanderingMixin",
     "oculus.OculusTitleScreenPipelineSkipMixin",
     "client.CreateWorldGlobalPacksSkipMixin"
