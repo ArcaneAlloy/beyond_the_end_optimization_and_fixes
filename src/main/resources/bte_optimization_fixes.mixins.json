@@ -76,7 +76,6 @@
     "geckolib.AnimatedTickingGeoModelGuiTickMixin",
     "geckolib.HumanoidArmorLayerSourceMixin",
     "geckolib.GeoArmorShadowBufferMixin",
-    "dungeonsmobs.SkeletonVanguardHeldItemMixin",
     "jeresources.VillagerRegistryOnlyWanderingMixin",
     "oculus.OculusTitleScreenPipelineSkipMixin",
     "client.CreateWorldGlobalPacksSkipMixin"
