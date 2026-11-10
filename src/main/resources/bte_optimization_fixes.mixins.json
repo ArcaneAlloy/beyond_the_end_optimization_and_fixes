@@ -65,7 +65,8 @@
     "forgottentome.ForgottenTomeCombatMapMixin",
     "worldgen.ProtectedStructureGenerateMixin",
     "worldgen.ProtectedStructureLocateMixin",
-    "quark.CorundumStructureGuardMixin"
+    "quark.CorundumStructureGuardMixin",
+    "supplementaries.CartographersQuillMapNameMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",
