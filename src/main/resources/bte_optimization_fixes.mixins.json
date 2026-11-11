@@ -69,7 +69,9 @@
     "supplementaries.CartographersQuillMapNameMixin",
     "dungeonsgear.LuckyExplorerClientGuardMixin",
     "dungeonsgear.SurpriseGiftClientGuardMixin",
-    "dungeonsgear.FoodReservesClientGuardMixin"
+    "dungeonsgear.FoodReservesClientGuardMixin",
+    "mimic.MimicTemplateChestsMixin",
+    "mimic.MimicSpawnerImportantChestMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",
