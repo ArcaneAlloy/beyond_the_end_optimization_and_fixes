@@ -66,7 +66,10 @@
     "worldgen.ProtectedStructureGenerateMixin",
     "worldgen.ProtectedStructureLocateMixin",
     "quark.CorundumStructureGuardMixin",
-    "supplementaries.CartographersQuillMapNameMixin"
+    "supplementaries.CartographersQuillMapNameMixin",
+    "dungeonsgear.LuckyExplorerClientGuardMixin",
+    "dungeonsgear.SurpriseGiftClientGuardMixin",
+    "dungeonsgear.FoodReservesClientGuardMixin"
   ],
   "client": [
     "euphoriapatcher.EuphoriaPatcherDetectionMixin",
