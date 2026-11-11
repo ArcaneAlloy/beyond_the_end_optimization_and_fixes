@@ -67,7 +67,7 @@
     "worldgen.ProtectedStructureLocateMixin",
     "quark.CorundumStructureGuardMixin",
     "supplementaries.CartographersQuillMapNameMixin",
-    "dungeonsgear.LuckyExplorerClientGuardMixin",
+    "dungeonsgear.LuckyExplorerReworkMixin",
     "dungeonsgear.SurpriseGiftClientGuardMixin",
     "dungeonsgear.FoodReservesClientGuardMixin",
     "mimic.MimicTemplateChestsMixin",
