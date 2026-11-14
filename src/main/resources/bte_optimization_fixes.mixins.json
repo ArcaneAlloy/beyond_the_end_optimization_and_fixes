@@ -68,6 +68,7 @@
     "quark.CorundumStructureGuardMixin",
     "supplementaries.CartographersQuillMapNameMixin",
     "dungeonsgear.LuckyExplorerReworkMixin",
+    "dungeonsgear.LifeBoostRespawnMixin",
     "dungeonsgear.SurpriseGiftClientGuardMixin",
     "dungeonsgear.FoodReservesClientGuardMixin",
     "mimic.MimicTemplateChestsMixin",
