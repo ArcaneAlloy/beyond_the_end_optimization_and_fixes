@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:ender_dragon",
+    "minecraft:warden",
+    { "id": "alexsmobs:warped_mosco", "required": false },
+    { "id": "cataclysm:ender_golem", "required": false },
+    { "id": "beyondtheend:fallen_dragon", "required": false },
+    { "id": "beyondtheend:jellyfish", "required": false }
+  ]
+}
