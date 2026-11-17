@@ -1,6 +1,5 @@
 package com.endersjourney.bteoptimizationfixes.compat.dungeonsgear;
 
-import com.endersjourney.bteoptimizationfixes.mixin.item.ItemMaxDamageAccessor;
 import net.minecraft.world.item.Item;
 
 /**
@@ -25,7 +24,7 @@ public final class UnbreakableArtifacts {
 
     /** Llamado desde ArtifactUnbreakableMixin con el propio artefacto. */
     public static void apply(Object artifact) {
-        ((ItemMaxDamageAccessor) artifact).setBteoptMaxDamage(0);
+        ((ItemMaxDamageAccess) artifact).bteopt$setMaxDamage(0);
     }
 
     /** Si el objeto es un artefacto de Dungeons Libraries (false si el mod no esta). */
