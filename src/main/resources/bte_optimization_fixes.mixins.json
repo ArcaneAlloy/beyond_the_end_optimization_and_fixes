@@ -71,6 +71,8 @@
     "dungeonsgear.LifeBoostRespawnMixin",
     "dungeonsgear.SurpriseGiftClientGuardMixin",
     "dungeonsgear.FoodReservesClientGuardMixin",
+    "dungeonsgear.ArtifactUnbreakableMixin",
+    "item.ItemMaxDamageAccessor",
     "mimic.MimicTemplateChestsMixin",
     "mimic.MimicSpawnerImportantChestMixin"
   ],

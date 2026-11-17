@@ -1,5 +1,6 @@
 package com.endersjourney.bteoptimizationfixes.mixin.item;
 
+import com.endersjourney.bteoptimizationfixes.compat.dungeonsgear.UnbreakableArtifacts;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.Item;
@@ -31,6 +32,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * - Al cargar un objeto (mundo, jugador, cofres, almacenes de mods...): los objetos que ya estaban marcados en un mundo
  *   existente vuelven a apilarse.
  *
+ * Artefactos de Dungeons Gear (irrompibles, ver UnbreakableArtifacts): a estos se les quita el "Damage" tenga el valor
+ * que tenga, asi los que ya estaban gastados en un mundo existente quedan como nuevos al cargarlos.
+ *
  * Mapeo verificado con forge-1.19.2-43.5.2-server.jar: f_41589_ = item, f_41590_ = tag, m_41721_ = setDamageValue,
  * m_41751_ = setTag, m_41777_ = copy, <init>(CompoundTag) = ItemStack(CompoundTag), usado por ItemStack.of al cargar.
  */
@@ -54,11 +58,15 @@ public abstract class ItemStackDamageTagMixin {
         return item != null && item != Items.AIR && !item.isDamageable((ItemStack) (Object) this);
     }
 
-    /** Quita "Damage: 0" de un objeto sin durabilidad; si el NBT se queda vacio, lo borra. */
+    /**
+     * Quita "Damage: 0" de un objeto sin durabilidad (y cualquier "Damage" de un artefacto); si el NBT se queda vacio,
+     * lo borra.
+     */
     @Unique
     private void bteopt$cleanDamageTag() {
         CompoundTag tag = this.f_41590_;
-        if (tag == null || !tag.contains("Damage", Tag.TAG_ANY_NUMERIC) || tag.getInt("Damage") != 0) return;
+        if (tag == null || !tag.contains("Damage", Tag.TAG_ANY_NUMERIC)) return;
+        if (tag.getInt("Damage") != 0 && !UnbreakableArtifacts.isArtifact(this.f_41589_)) return;
         if (!bteopt$hasNoDurability()) return;
         tag.remove("Damage");
         if (tag.isEmpty()) this.f_41590_ = null;
@@ -66,7 +74,7 @@ public abstract class ItemStackDamageTagMixin {
 
     @Inject(method = "m_41721_", at = @At("HEAD"), cancellable = true, remap = false)
     private void bteopt$skipZeroDamageOnUndamageable(int damage, CallbackInfo ci) {
-        if (damage != 0 || !bteopt$hasNoDurability()) return;
+        if ((damage != 0 && !UnbreakableArtifacts.isArtifact(this.f_41589_)) || !bteopt$hasNoDurability()) return;
         if (this.f_41590_ != null) this.f_41590_.remove("Damage");
         ci.cancel();
     }
