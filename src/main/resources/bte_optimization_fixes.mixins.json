@@ -73,6 +73,7 @@
     "dungeonsgear.FoodReservesClientGuardMixin",
     "dungeonsgear.ArtifactUnbreakableMixin",
     "item.ItemMaxDamageAccessor",
+    "brokenitems.BrokenItemSoundOnceMixin",
     "mimic.MimicTemplateChestsMixin",
     "mimic.MimicSpawnerImportantChestMixin"
   ],
