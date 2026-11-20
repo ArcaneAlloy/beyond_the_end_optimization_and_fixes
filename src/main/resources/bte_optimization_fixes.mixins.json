@@ -89,7 +89,8 @@
     "jei.JeiRecipeLayoutTooltipMixin",
     "jei.JeiTooltipIngredientMixin",
     "oculus.OculusTitleScreenPipelineSkipMixin",
-    "client.CreateWorldGlobalPacksSkipMixin"
+    "client.CreateWorldGlobalPacksSkipMixin",
+    "vtweaks.ChallengerParticleRenderThreadMixin"
   ],
   "server": [],
   "injectors": {
